@@ -48,26 +48,8 @@ HERE
 next_step () {
   cat <<HERE
 
-Well done! Now you can continue with building the Docker image:
-
-  # Go to $ARTEMIS_DIST_DIR
-  $ cd $ARTEMIS_DIST_DIR
-
-  # For CentOS with full JDK
-  $ docker build -f ./docker/Dockerfile-centos7-11 -t artemis-centos .
-
-  # For Ubuntu with full JDK
-  $ docker build -f ./docker/Dockerfile-ubuntu-11 -t artemis-ubuntu .
-
-  # For Ubuntu with just JRE
-  $ docker build -f ./docker/Dockerfile-ubuntu-11-jre -t artemis-ubuntu .
-
-  # For Ubuntu on Linux ARMv7/ARM64 with full JDK
-  $ docker buildx build --platform linux/arm64,linux/arm/v7 --push -t {your-repository}/apache-artemis:2.17.0-SNAPSHOT -f ./docker/Dockerfile-ubuntu-11 .
-
-Note: -t artemis-centos and -t artemis-ubuntu are just tag names for the purpose of this guide
-
-For more info see readme.md
+Installation complete. The builder is done building your image. Now it is time to copy your build to your image of
+choice.
 
 HERE
   exit 0
@@ -181,10 +163,6 @@ if [ ! -d "${ARTEMIS_DIST_DIR}/docker" ]; then
   mkdir "${ARTEMIS_DIST_DIR}/docker"
 fi
 
-cp ./Dockerfile-* "$ARTEMIS_DIST_DIR/docker"
 cp ./docker-run.sh "$ARTEMIS_DIST_DIR/docker"
-
-echo "Docker file support files at:"
-tree "$ARTEMIS_DIST_DIR/docker"
 
 next_step
