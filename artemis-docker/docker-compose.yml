@@ -6,6 +6,6 @@ services:
       dockerfile: ./artemis-docker/Dockerfile-build
     image: artemis-docker-base
     command: >
-      bash -c "pwd && ls -lisa && mvn -q clean install -DskipTests -DskipITs -DskipDocs -DskipDocker -DskipDoc"
+      bash -c "rm -rf ./target/*  && mvn install -DskipTests -DskipITs -DskipDocs -DskipDocker -DskipDoc"
     volumes:
-      - ./target:/root/artemis-build/
+      - ./target:/root/artemis-build/artemis-distribution/target
